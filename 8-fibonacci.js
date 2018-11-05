@@ -1,6 +1,7 @@
 
 function fib(n) {
   const table = [0, 1, 1];
+  
   fib_memo(n);
   function fib_memo(n) {
     if(n < 3) return;
