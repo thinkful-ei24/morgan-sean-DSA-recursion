@@ -1,4 +1,4 @@
-[
+const data = [
   { id: "Zuckerberg", parent: null },
   { id: "Schroepfer", parent: "Zuckerberg" },
   { id: "Bosworth", parent: "Schroepfer" },
@@ -36,3 +36,15 @@
   { id: "Ana", parent: "Kelley" },
   { id: "Wes", parent: "Kelley" }
 ];
+
+function traverse(data, parent, indent) {
+  let node = {};
+  data.filter(item => item.parent === parent).forEach(item => {
+    const spaces = " ".repeat(indent);
+    console.log(spaces + item.id);
+    node[item.id] = traverse(data, item.id, indent + 4);
+  });
+  return node;
+}
+
+const tree = traverse(data, null, 0);
